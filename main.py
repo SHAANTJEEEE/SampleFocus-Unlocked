@@ -2,13 +2,14 @@ import os
 import requests
 import json
 from bs4 import BeautifulSoup
+from colorama import Fore
 
 download_folder = 'SampleFocus Exported'
 
-print('SampleFocus Unlocked 1.0.3\nMade by werxqq0\nhttps://github.com/werxqq0/SampleFocus-Unlocked\n')
+print(f'{Fore.LIGHTWHITE_EX}SampleFocus Unlocked 1.0.4\nMade by werxqq0\n{Fore.LIGHTCYAN_EX}https://github.com/werxqq0/SampleFocus-Unlocked\n')
 
 while True:
-    input_audio_link = input('Audio Link: ')
+    input_audio_link = input(f'{Fore.LIGHTWHITE_EX}Audio Link: ')
 
     def download_audio(link):
         if link.startswith('https://samplefocus.com/'):
@@ -36,19 +37,19 @@ while True:
                             if response.status_code == 200:
                                 with open(file_path, 'wb') as file:
                                     file.write(response.content)
-                                print(f'File {file_name} downloaded successfully.\n')
+                                print(f'{Fore.LIGHTGREEN_EX}File «{file_name}» downloaded successfully.\n')
                             else:
-                                print(f'Cannot download file {file_name}!\n')
+                                print(f'{Fore.LIGHTRED_EX}Cannot download file «{file_name}»!\n')
                         else:
-                            print('Could not find a link to download audio on the page!\n')
+                            print(f'{Fore.LIGHTRED_EX}Could not find a link to download audio on the page!\n')
                     else:
-                        print('The download element could not be found on the page!\n')
+                        print(f'{Fore.LIGHTRED_EX}The download element could not be found on the page!\n')
                 else:
-                    print('This audio does not exist!\n')
+                    print(f'{Fore.LIGHTRED_EX}This audio does not exist!\n')
 
             download_audio_system(input_audio_link)
         else:
-            print('This link is not a SampleFocus site!\n')
+            print(f'{Fore.LIGHTRED_EX}This link is not a SampleFocus site!\n')
             return False
 
     download_audio(input_audio_link)
