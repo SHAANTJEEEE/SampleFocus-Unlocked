@@ -3,18 +3,18 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
-download_folder = 'samplefocus_export'
+download_folder = 'SampleFocus Exported'
 
-print('SampleFocus Unlocked 1.0.2\nMade by werxqq0\nhttps://github.com/werxqq0/SampleFocus-Unlocked\n')
+print('SampleFocus Unlocked 1.0.3\nMade by werxqq0\nhttps://github.com/werxqq0/SampleFocus-Unlocked\n')
 
 while True:
-    input_audio_link = input('Music Link: ')
+    input_audio_link = input('Audio Link: ')
 
-    def download_music(link):
+    def download_audio(link):
         if link.startswith('https://samplefocus.com/'):
             os.makedirs(download_folder, exist_ok=True)
-            def download_system(url):
-                response = requests.get(url)
+            def download_audio_system(link):
+                response = requests.get(link)
                 if response.status_code == 200:
                     soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -29,6 +29,7 @@ while True:
 
                         if audio_link:
                             file_name = os.path.basename(f'{input_audio_link}.mp3')
+                            file_name = file_name.replace("-", " ").title()
                             file_path = os.path.join(download_folder, file_name)
 
                             response = requests.get(audio_link)
@@ -39,15 +40,15 @@ while True:
                             else:
                                 print(f'Cannot download file {file_name}!\n')
                         else:
-                            print('Could not find a link to download music on the page!\n')
+                            print('Could not find a link to download audio on the page!\n')
                     else:
                         print('The download element could not be found on the page!\n')
                 else:
                     print('This audio does not exist!\n')
 
-            download_system(input_audio_link)
+            download_audio_system(input_audio_link)
         else:
             print('This link is not a SampleFocus site!\n')
             return False
 
-    download_music(input_audio_link)
+    download_audio(input_audio_link)
