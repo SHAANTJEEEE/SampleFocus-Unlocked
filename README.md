@@ -1,5 +1,5 @@
 # SampleFocus Unlocked
-Download any audio from SampleFocus for free.
+Download any audio from SampleFocus using python for free.
 
 Required librares:
 - requests
