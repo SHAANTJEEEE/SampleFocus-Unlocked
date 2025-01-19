@@ -27,8 +27,7 @@ while True:
                         props_json = json.loads(data_react_props)
 
                         audio_link = props_json.get('sample').get('sample_mp3_url')
-
-                        if audio_link:
+                if audio_link:
                             file_name = os.path.basename(f'{input_audio_link}.mp3')
                             file_name = file_name.replace("-", " ").title()
                             file_path = os.path.join(download_folder, file_name)
